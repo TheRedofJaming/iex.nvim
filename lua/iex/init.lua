@@ -18,21 +18,19 @@ function M:start_iex()
 	M.iex_pid = jobstart({'iex', '--sname', M.session_name}, {
 		on_stdout = function(chan_id, data, name)
 			print(chan_id .. " >> " .. vim.inspect(data))
-			M:log_output({chan_id, data, name})
+			M:log_stdout({chan_id, data, name})
 		end,
 		on_stderr  = function(chan_id, data, name)
-			M:log_output({chan_id, data, name})
+			M:log_stdout({chan_id, data, name})
 		end,
 	})
 end
 
 function M:stop_iex()
-	M:send_lines("^c")
-	M:send_lines("^d")
 	jobstop(M.iex_pid)
 end
 
-function M:log_output(entry)
+function M:log_stdout(entry)
 	table.insert(M.log_entries, entry)
 end
 
@@ -52,5 +50,16 @@ function M:send_lines(lines)
 	lines = lines .. "\n"
 	chan_send(M.iex_pid, lines)
 end
+
+vim.api.nvim_create_user_command(
+	"StartIEX",
+	M.start_iex,
+	{ nargs = 0}
+)
+vim.api.nvim_create_user_command(
+	"StopIEX",
+	M.stop_iex,
+	{ nargs = 0}
+)
 
 return M
