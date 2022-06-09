@@ -1,3 +1,6 @@
 [submodule "plenary.nvim"]
 	path = plenary.nvim
 	url = https://github.com/nvim-lua/plenary.nvim/
+[submodule "lua/luaposix"]
+	path = lua/luaposix
+	url = https://github.com/luaposix/luaposix
