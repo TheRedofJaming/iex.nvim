@@ -1,6 +1,10 @@
-jobstart = vim.fn.jobstart
-jobstop = vim.fn.jobstop
-chan_send = vim.fn.chansend
+local jobstart = vim.fn.jobstart
+local jobstop = vim.fn.jobstop
+local chan_send = vim.fn.chansend
+
+local signal = require('posix.signal')
+
+
 if chan_send then
 	print('loaded...')
 end
