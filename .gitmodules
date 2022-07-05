@@ -4,3 +4,6 @@
 [submodule "lua/luaposix"]
 	path = lua/luaposix
 	url = https://github.com/luaposix/luaposix
+[submodule "lua/iex/plenary.nvim"]
+	path = lua/iex/plenary.nvim
+	url = https://github.com/nvim-lua/plenary.nvim
