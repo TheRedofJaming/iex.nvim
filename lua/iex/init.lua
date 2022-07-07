@@ -1,5 +1,5 @@
 --- NVIM IEX ---
--- TODO Follow Documentation Style https://github.com/lunarmodules/LDoc
+-- TODO Follow Documentation Style https://keplerproject.github.io/luadoc/manual.html#howto
 
 
 
