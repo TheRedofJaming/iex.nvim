@@ -10,16 +10,17 @@ local Job = require 'plenary.job'
 
 session_name = "a1"
 
---- Single IEX Session.
--- Enables writing to, and reading from iex
+---Single IEX Session.
+--Enables writing to, and reading from iex
 --@field  process : IEX process
 --@field  PID 
---@field  output : output of this session by line
 --@field  error_log
 
 local IEX_Session = {}
 IEX_Session.__index = IEX_Session
 
+---Session creator
+--@arg options { name, cookie, ... } TODO
 
 function IEX_Session:new(options)
 
@@ -31,7 +32,7 @@ function IEX_Session:new(options)
 	new_iex_session.process = Job:new({
 		command = "iex",
 		args = {},
-		on_stdout = function(err, out) 
+		on_stdout = function(err, out)
 			print(err)
 			print(out)
 		end,
